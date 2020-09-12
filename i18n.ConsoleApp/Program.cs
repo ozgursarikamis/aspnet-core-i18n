@@ -24,6 +24,8 @@ namespace i18n.ConsoleApp
             Console.WriteLine(CultureInfo.CurrentCulture);
             StringSortMethod();
 
+            NumberParsingDemo();
+
         }
 
         private static void DisplayCurrentCulture()
@@ -63,6 +65,13 @@ namespace i18n.ConsoleApp
             }
             Console.WriteLine("============================= StringSortMethod");
             Console.WriteLine();
+        }
+
+        private static void NumberParsingDemo()
+        {
+            const string numberAsString = "1,500";
+            var number = decimal.Parse(numberAsString) + 1;
+            Console.WriteLine(number);
         }
     }
 }
