@@ -70,7 +70,7 @@ namespace i18n.ConsoleApp
         private static void NumberParsingDemo()
         {
             const string numberAsString = "1,500";
-            var number = decimal.Parse(numberAsString) + 1;
+            var number = decimal.Parse(numberAsString, new CultureInfo("en-GB")) + 1;
             Console.WriteLine(number);
         }
     }
