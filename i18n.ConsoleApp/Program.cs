@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Globalization;
+using System.Linq;
+using System.Text;
 
 namespace i18n.ConsoleApp
 {
@@ -7,9 +9,11 @@ namespace i18n.ConsoleApp
     {
         private static void Main()
         {
+            Console.OutputEncoding = Encoding.UTF8;
+
             DisplayDateAndTime();
             DisplayCurrentCulture();
-            DateTimeParseDemo();
+            StringSortMethod();
 
             Console.WriteLine("============================= Change The Culture Info");
             var en = new CultureInfo("tr-TR");
@@ -18,6 +22,7 @@ namespace i18n.ConsoleApp
             DisplayDateAndTime();
 
             Console.WriteLine(CultureInfo.CurrentCulture);
+            StringSortMethod();
 
         }
 
@@ -41,6 +46,23 @@ namespace i18n.ConsoleApp
             var date = DateTime.Parse(dateString, new CultureInfo("de-De"));
             Console.WriteLine(date.ToString("D"));
             Console.WriteLine("============================= DateTime Parse");
+        }
+
+        private static void StringSortMethod()
+        {
+            Console.WriteLine();
+            Console.WriteLine("============================= StringSortMethod");
+
+            string[] surnames =
+            {
+                "Zoltan", "Anderson", "Çelik", "Davis", "Şuayip", "Cooper"
+            };
+            foreach (var surname in surnames.OrderBy(x => x))
+            {
+                Console.WriteLine(surname);
+            }
+            Console.WriteLine("============================= StringSortMethod");
+            Console.WriteLine();
         }
     }
 }
