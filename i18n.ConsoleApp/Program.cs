@@ -9,6 +9,7 @@ namespace i18n.ConsoleApp
         {
             DisplayDateAndTime();
             DisplayCurrentCulture();
+            DateTimeParseDemo();
 
             Console.WriteLine("============================= Change The Culture Info");
             var en = new CultureInfo("tr-TR");
@@ -18,7 +19,6 @@ namespace i18n.ConsoleApp
 
             Console.WriteLine(CultureInfo.CurrentCulture);
 
-            DateTimeParseDemo();
         }
 
         private static void DisplayCurrentCulture()
@@ -38,8 +38,9 @@ namespace i18n.ConsoleApp
         {
             Console.WriteLine("============================= DateTime Parse");
             const string dateString = "24.12.2016";
-            var date = DateTime.Parse(dateString);
+            var date = DateTime.Parse(dateString, new CultureInfo("de-De"));
             Console.WriteLine(date.ToString("D"));
+            Console.WriteLine("============================= DateTime Parse");
         }
     }
 }
