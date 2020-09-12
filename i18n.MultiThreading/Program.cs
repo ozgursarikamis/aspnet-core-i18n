@@ -9,7 +9,7 @@ namespace i18n.MultiThreading
     {
         private static void Main()
         {
-            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en-EN");
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
 
             ThreadInfo();
