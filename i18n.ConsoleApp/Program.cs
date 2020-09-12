@@ -72,6 +72,9 @@ namespace i18n.ConsoleApp
             const string numberAsString = "1,500";
             var number = decimal.Parse(numberAsString, new CultureInfo("en-GB")) + 1;
             Console.WriteLine(number);
+            Console.WriteLine("{0:C}", number); // currency formatting
+            Console.WriteLine(number.ToString("C", new CultureInfo("en-US"))); // always use US Dollar
+            Console.WriteLine(number.ToString("C", new CultureInfo("de-DE"))); // always use €
         }
     }
 }
