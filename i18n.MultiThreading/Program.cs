@@ -9,6 +9,8 @@ namespace i18n.MultiThreading
     {
         private static void Main()
         {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("pt-BR");
+
             ThreadInfo();
 
             TaskFactory taskFactory = new TaskFactory();
