@@ -57,7 +57,7 @@ namespace i18n.ConsoleApp
             {
                 "Zoltan", "Anderson", "Çelik", "Davis", "Şuayip", "Cooper"
             };
-            foreach (var surname in surnames.OrderBy(x => x))
+            foreach (var surname in surnames.OrderBy(x => x, StringComparer.Ordinal))
             {
                 Console.WriteLine(surname);
             }
