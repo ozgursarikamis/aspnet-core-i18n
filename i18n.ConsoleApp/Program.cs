@@ -7,9 +7,12 @@ namespace i18n.ConsoleApp
     {
         private static void Main()
         {
+            DisplayDateAndTime();
             DisplayCurrentCulture();
             var en = new CultureInfo("tr-TR");
             CultureInfo.CurrentCulture = en;
+            DisplayDateAndTime();
+
             Console.WriteLine(CultureInfo.CurrentCulture);
         }
 
@@ -19,6 +22,11 @@ namespace i18n.ConsoleApp
             Console.WriteLine(CultureInfo.CurrentCulture.Name);
             Console.WriteLine(CultureInfo.CurrentCulture.DisplayName);
             Console.WriteLine("=============================");
+        }
+
+        private static void DisplayDateAndTime()
+        {
+            Console.WriteLine(DateTime.Now);
         }
     }
 }
