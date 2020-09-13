@@ -1,9 +1,9 @@
+using i18n.StringLocalizers.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection; 
 
 namespace i18n.StringLocalizers
 {
@@ -20,6 +20,12 @@ namespace i18n.StringLocalizers
         public void ConfigureServices(IServiceCollection services)
         {
             //services.AddRazorPages();
+            services.AddScoped<IAboutService, AboutService>();
+            services.AddScoped<IHelpService, HelpService>();
+            services.AddLocalization(options =>
+            {
+                options.ResourcesPath = "Resources";
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,9 +50,28 @@ namespace i18n.StringLocalizers
             //{
             //    endpoints.MapRazorPages();
             //});
-
             app.Run(async context =>
             {
+                if (context.Request.Query.ContainsKey("about"))
+                {
+                    var searchTerm = context.Request.Query["about"];
+                    IAboutService service = context.RequestServices.GetService<IAboutService>();
+                    var content = service.Reply(searchTerm);
+                    await context.Response.WriteAsync(content);
+                    return;
+                }
+
+                if (context.Request.Query.ContainsKey("help"))
+                {
+                    string serviceName = context.Request.Query["help"];
+                    IHelpService service = context.RequestServices.GetService<IHelpService>();
+
+                    var content = service.GetHelpFor(serviceName);
+                    await context.Response.WriteAsync(content);
+
+                    return;
+                }
+
                 await context.Response.WriteAsync("Welcome to App-O-Matic");
             });
         }
