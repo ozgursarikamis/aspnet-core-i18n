@@ -1,10 +1,12 @@
 using System.Globalization;
+using i18n.StringLocalizers.Localization;
 using i18n.StringLocalizers.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection; 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 
 namespace i18n.StringLocalizers
 {
@@ -25,10 +27,17 @@ namespace i18n.StringLocalizers
             services.AddScoped<IHelpService, HelpService>();
             services.AddScoped<IDepartmentService, DepartmentService>();
 
-            services.AddLocalization(options =>
+            services.AddSingleton<IStringLocalizerFactory, JsonStringLocalizerFactory>();
+            services.AddTransient(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
+
+            services.Configure<JsonLocalizationOptions>(options =>
             {
-                options.ResourcesPath = "Resources";
+                options.ResourcePath = "JsonResources";
             });
+            //services.AddLocalization(options =>
+            //{
+            //    options.ResourcesPath = "Resources";
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
