@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.Loader;
 
 namespace i18n.ReaderWriter
 {
@@ -6,7 +7,14 @@ namespace i18n.ReaderWriter
     {
         private static void Main()
         {
-            Console.WriteLine("Hello World!");
+            var path = AppContext.BaseDirectory + "\\de-DE\\i18n.ReaderWriter.resources.dll";
+            var assembly = AssemblyLoadContext.Default.LoadFromAssemblyPath(path);
+
+            var names = assembly.GetManifestResourceNames();
+            foreach (var name in names)
+            {
+                Console.WriteLine(name);
+            }
         }
     }
 }
