@@ -23,6 +23,8 @@ namespace i18n.StringLocalizers
             //services.AddRazorPages();
             services.AddScoped<IAboutService, AboutService>();
             services.AddScoped<IHelpService, HelpService>();
+            services.AddScoped<IDepartmentService, DepartmentService>();
+
             services.AddLocalization(options =>
             {
                 options.ResourcesPath = "Resources";
@@ -75,6 +77,18 @@ namespace i18n.StringLocalizers
 
                     var content = service.GetHelpFor(serviceName);
                     await context.Response.WriteAsync(content);
+
+                    return;
+                }
+
+                if (context.Request.Query.ContainsKey("department"))
+                {
+                    var department = context.Request.Query["department"];
+
+                    IDepartmentService service = context.RequestServices.GetService<IDepartmentService>();
+                    var info = service.GetInfo(department);
+
+                    await context.Response.WriteAsync(info);
 
                     return;
                 }
