@@ -1,3 +1,4 @@
+using System.Globalization;
 using i18n.StringLocalizers.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,6 +53,12 @@ namespace i18n.StringLocalizers
             //});
             app.Run(async context =>
             {
+                if (context.Request.Query.ContainsKey("ui"))
+                {
+                    var tag = context.Request.Query["ui"];
+                    CultureInfo.CurrentUICulture = new CultureInfo(tag);
+
+                }
                 if (context.Request.Query.ContainsKey("about"))
                 {
                     var searchTerm = context.Request.Query["about"];

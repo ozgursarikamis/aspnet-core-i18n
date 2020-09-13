@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Localization;
+﻿using System.Diagnostics;
+using Microsoft.Extensions.Localization;
 
 namespace i18n.StringLocalizers.Services
 {
@@ -14,6 +15,7 @@ namespace i18n.StringLocalizers.Services
         public AboutService(IStringLocalizer<AboutService> localizer)
         {
             _localizer = localizer;
+            Debug.WriteLine(_localizer.GetType());
         }
         public string Reply(string searchTerm)
         {
