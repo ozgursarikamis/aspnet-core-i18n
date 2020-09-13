@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Microsoft.Extensions.Localization;
 
 namespace i18n.StringLocalizers.Services
@@ -11,35 +13,28 @@ namespace i18n.StringLocalizers.Services
 
     public class HelpService : IHelpService
     {
-        private readonly IStringLocalizer<AboutService> _aboutLocalizer;
-        private readonly IStringLocalizer<DepartmentService> _departmentLocalizer;
+        private readonly IStringLocalizerFactory _factory;
 
-        public HelpService(IStringLocalizer<AboutService> aboutLocalizer, IStringLocalizer<DepartmentService> departmentLocalizer)
+        public HelpService(IStringLocalizerFactory factory)
         {
-            _aboutLocalizer = aboutLocalizer;
-            _departmentLocalizer = departmentLocalizer;
+            _factory = factory;
         }
         public string GetHelpFor(string serviceName)
         {
-            IEnumerable<LocalizedString> resources;
-
-            switch (serviceName)
-            { 
-                case "about":
-                {
-                    resources = _aboutLocalizer.GetAllStrings();
-                    break;
-                }
-                case "department":
-                {
-                    resources = _departmentLocalizer.GetAllStrings();
-                    break;
-                }
-                default:
-                {
-                    return $"Help was not found for {serviceName}";
-                }
+            var serviceClassName = $"{serviceName}Service";
+            Type serviceType = Assembly.GetEntryAssembly()
+                ?.ExportedTypes
+                .FirstOrDefault(
+                    x => x.Name.Equals(serviceClassName, StringComparison.CurrentCultureIgnoreCase)
+                    );
+            if (serviceType == null)
+            {
+                return $"Help is not abailable for {serviceName}";
             }
+
+            IStringLocalizer localizer = _factory.Create(serviceType);
+
+            IEnumerable<LocalizedString> resources = localizer.GetAllStrings();
             IEnumerable<string> keys = resources.Select(x => x.Name);
 
             return $"Available Keys: {string.Join(",", keys)}";
