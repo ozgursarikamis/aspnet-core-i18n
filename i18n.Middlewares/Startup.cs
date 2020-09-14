@@ -34,7 +34,8 @@ namespace i18n.Middlewares
                     new CultureInfo("es"),
                     new CultureInfo("fr-FR"),
                 };
-                options.DefaultRequestCulture = new RequestCulture("bs");
+                options.FallBackToParentUICultures = true;
+                options.DefaultRequestCulture = new RequestCulture("es");
             });
 
             services.AddControllersWithViews();
