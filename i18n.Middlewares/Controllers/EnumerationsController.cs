@@ -46,7 +46,7 @@ namespace i18n.Middlewares.Controllers
             Debug.WriteLine("===========================");
             Debug.WriteLine($"Culture: {feature.RequestCulture.Culture}");
             Debug.WriteLine($"UI Culture: {feature.RequestCulture.UICulture}");
-            Debug.WriteLine($"Provider: {feature.Provider}");
+            //Debug.WriteLine($"Provider: {feature.Provider}");
 
             return Ok(selectList);
         }
