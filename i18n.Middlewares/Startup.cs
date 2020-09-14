@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Globalization;
+using i18n.Middlewares.Localization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Localization.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -29,13 +31,18 @@ namespace i18n.Middlewares
             {
                 options.SupportedCultures = new List<CultureInfo>
                 {
-                    new CultureInfo("bs"),
+                    // new CultureInfo("bs"),
                     new CultureInfo("de"),
                     new CultureInfo("es"),
                     new CultureInfo("fr-FR"),
                 };
                 options.FallBackToParentUICultures = true;
                 options.DefaultRequestCulture = new RequestCulture("es");
+                options.RequestCultureProviders.Insert(0,
+                    new RouteDataRequestCultureProvider());
+
+                options.RequestCultureProviders.Insert(1,
+                    new CountryDomainRequestCultureProvider());
             });
 
             services.AddControllersWithViews();
@@ -45,6 +52,7 @@ namespace i18n.Middlewares
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseRequestLocalization();
+            // app.UseMvcWithDefaultRoute();
 
             if (env.IsDevelopment())
             {
@@ -65,7 +73,7 @@ namespace i18n.Middlewares
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{ui-culture}/{controller=Enumerations}/{action=Genders}/{id?}");
             });
         }
     }
