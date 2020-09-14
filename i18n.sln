@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "i18n.StringLocalizers", "i1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i18n.Middlewares", "i18n.Middlewares\i18n.Middlewares.csproj", "{14862967-8E0F-477C-9CA7-87CEC672D353}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{8333AAF9-30BD-485F-9929-4A451BC8401E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "i18n.MvcImplementation", "i18n.MvcImplementation\i18n.MvcImplementation.csproj", "{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,9 +61,18 @@ Global
 		{14862967-8E0F-477C-9CA7-87CEC672D353}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14862967-8E0F-477C-9CA7-87CEC672D353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14862967-8E0F-477C-9CA7-87CEC672D353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A99729A-5049-4870-BF6B-D26CBC15B8E9} = {8333AAF9-30BD-485F-9929-4A451BC8401E}
+		{14862967-8E0F-477C-9CA7-87CEC672D353} = {8333AAF9-30BD-485F-9929-4A451BC8401E}
+		{32948FD8-07E8-4EA7-9DCB-090F1AD0E0A4} = {8333AAF9-30BD-485F-9929-4A451BC8401E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BC28749-124C-4138-8228-21B42F364DBC}
