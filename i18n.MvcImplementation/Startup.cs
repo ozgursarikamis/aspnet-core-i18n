@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -18,7 +20,17 @@ namespace i18n.MvcImplementation
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+          services.AddControllersWithViews();
+
+          services.Configure<RequestLocalizationOptions>(options =>
+          {
+              options.SupportedUICultures = new List<CultureInfo>
+              {
+                  new CultureInfo("en-US"),
+                  new CultureInfo("ru-RU"),
+                  new CultureInfo("es-MX"),
+              };
+          });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
