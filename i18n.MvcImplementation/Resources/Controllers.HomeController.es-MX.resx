@@ -127,7 +127,7 @@
     <value>Hemos establecido una estrategia de control de calidad que se integra perfectamente en el ciclo de vida del desarrollo. Nuestra experiencia en la creación de planes de prueba automatizados y su ejecución como parte del proceso de integración de continuoues aportará eficiencia, calidad y &lt;strong&gt; valor adicional a su producto &lt;/strong&gt;.</value>
   </data>
   <data name="Thank you" xml:space="preserve">
-    <value>Gracias por tu mensaje &lt;strong&gt; {0} &lt;/strong&gt;, nos pondremos en contacto contigo pronto.</value>
+    <value>Gracias por tu mensaje &lt;strong&gt; {0} &lt;/strong&gt;, nos pondremos en contacto contigo pronto. {1}</value>
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>Bienvenido a</value>
