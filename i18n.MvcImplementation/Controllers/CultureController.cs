@@ -19,8 +19,7 @@ namespace i18n.MvcImplementation.Controllers
                 .ToArray() ?? Array.Empty<string>();
 
             IRequestCultureFeature feature = HttpContext.Features.Get<IRequestCultureFeature>();
-            RequestCulture requestCulture = 
-                new RequestCulture(feature.RequestCulture.Culture, new CultureInfo(uiCulture));
+            RequestCulture requestCulture = new RequestCulture(feature.RequestCulture.Culture, new CultureInfo(uiCulture));
 
             string cookieValue = CookieRequestCultureProvider.MakeCookieValue(requestCulture);
             string cookieName = CookieRequestCultureProvider.DefaultCookieName;
