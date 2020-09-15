@@ -1,6 +1,9 @@
 ﻿@model string
 @inject IHtmlLocalizer<HomeController> localizer;
-
+<br />
+<br />
+<br />
+<br />
 <div class="well">
-    Thank you for your message <strong>@Model</strong>, we'll get in touch with you soon!
+    @localizer["Thank you", Model]
 </div>
