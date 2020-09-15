@@ -1,6 +1,8 @@
-﻿<div class="jumbotron">
+﻿@inject IHtmlLocalizer<HomeController> localizer
+
+<div class="jumbotron">
     <h1 class="text-center">
-        <span>Welcome to</span>&nbsp;<img class="company-logo" src="~/images/company_logo.png" />!
+        <span>@localizer["Welcome"]</span>&nbsp;<img class="company-logo" src="~/images/company_logo.png" />!
     </h1>
 </div>
 <div class="row">
@@ -12,7 +14,9 @@
         </div>
         <br />
         <div class="row">
-            <div class="col-xs-12 text-justify">Here at our company, we are not only creating custom solutions for you. We are helping you to solve your business problems through business analysis and consultancy. <strong>Our clients are our success record.</strong></div>
+            <div class="col-xs-12 text-justify">
+                @localizer["Business"]
+            </div>
         </div>
     </div>
     <div class="col-sm-4 col-xs-12">
@@ -23,7 +27,9 @@
         </div>
         <br />
         <div class="row">
-            <div class="col-xs-12 text-justify">We have established QA strategy that integrates seamlessly into the development lifecycle. Our expertise in creating automated test plans and executing them as part of the continuouos integration process will bring efficiency, quality and <strong>additional value to your product</strong>.</div>
+            <div class="col-xs-12 text-justify">
+                @localizer["Quality"]
+            </div>
         </div>
     </div>
     <div class="col-sm-4 col-xs-12">
@@ -34,7 +40,9 @@
         </div>
         <br />
         <div class="row">
-            <div class="col-xs-12 text-justify"><strong>Future is in the cloud</strong>. Whether you want to migrate existing system or create a new one from the start, we are the right team for you. Our engineers are certified with all major cloud providers.</div>
+            <div class="col-xs-12 text-justify">
+                @localizer["Cloud"]
+            </div>
         </div>
     </div>
 </div>

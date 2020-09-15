@@ -1,5 +1,7 @@
 ﻿@inject IOptions<RequestLocalizationOptions> LocOptions
 
+@*Injecting localization options*@
+
 @{
     IEnumerable<SelectListItem> supportedUICultures = LocOptions.Value
         .SupportedUICultures
